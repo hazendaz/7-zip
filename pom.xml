@@ -11,7 +11,7 @@
 
     <groupId>com.github.hazendaz.7zip</groupId>
     <artifactId>7zip</artifactId>
-    <version>19.00-SNAPSHOT</version>
+    <version>19.00</version>
     <packaging>pom</packaging>
 
     <name>7zip</name>
@@ -36,7 +36,7 @@
         <connection>scm:git:ssh://git@github.com/hazendaz/7zip.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/hazendaz/7zip.git</developerConnection>
         <url>https://github.com/hazendaz/7zip</url>
-        <tag>HEAD</tag>
+        <tag>7zip-19.00</tag>
     </scm>
     <distributionManagement>
         <site>
