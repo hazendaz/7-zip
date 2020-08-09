@@ -33,16 +33,16 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:ssh://git@github.com/hazendaz/7zip.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/hazendaz/7zip.git</developerConnection>
-        <url>https://github.com/hazendaz/7zip</url>
+        <connection>scm:git:ssh://git@github.com/hazendaz/7-zip.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/hazendaz/7-zip.git</developerConnection>
+        <url>https://github.com/hazendaz/7-zip</url>
         <tag>7zip-19.00</tag>
     </scm>
     <distributionManagement>
         <site>
             <id>gh-pages</id>
             <name>7-Zip Distribution Wrapper GitHub Pages</name>
-            <url>github:https://hazendaz.github.io/7zip/</url>
+            <url>github:https://hazendaz.github.io/7-zip/</url>
         </site>
     </distributionManagement>
 
