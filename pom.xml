@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.github.hazendaz</groupId>
+        <artifactId>base-parent</artifactId>
+        <version>26</version>
+        <relativePath />
+    </parent>
+
+    <groupId>com.github.hazendaz.7zip</groupId>
+    <artifactId>7zip</artifactId>
+    <version>19.00-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>7zip</name>
+    <description>Distribution for 7-zip</description>
+    <url>https://hazendaz.github.io/7zip/</url>
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License, version 2.1</name>
+            <url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html</url>
+            <distribution>repo</distribution>
+            <comments>See 'LICENSE' file attached to this project from 7-zip.</comments>
+        </license>
+        <license>
+            <name>The 3-Clause BSD License</name>
+            <url>https://opensource.org/licenses/BSD-3-Clause</url>
+            <distribution>repo</distribution>
+            <comments>See 'LICENSE' file attached to this project from 7-zip.</comments>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:ssh://git@github.com/hazendaz/7zip.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/hazendaz/7zip.git</developerConnection>
+        <url>https://github.com/hazendaz/7zip</url>
+        <tag>HEAD</tag>
+    </scm>
+    <distributionManagement>
+        <site>
+            <id>gh-pages</id>
+            <name>7-Zip Distribution Wrapper GitHub Pages</name>
+            <url>github:https://hazendaz.github.io/7zip/</url>
+        </site>
+    </distributionManagement>
+
+    <properties>
+        <seven-zip.version>1900</seven-zip.version>
+        <download-plugin.version>1.6.0</download-plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- Download -->
+            <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <version>${download-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://www.7-zip.org/a/7z${seven-zip.version}-x64.exe</url>
+                            <outputDirectory>${project.build.directory}/7-zip</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Assembly -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>7zip-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>${project.basedir}/src/assembly/assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
