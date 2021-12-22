@@ -55,9 +55,9 @@
     </scm>
     <distributionManagement>
         <site>
-            <id>gh-pages</id>
+            <id>gh-pages-scm</id>
             <name>7-Zip Distribution Wrapper GitHub Pages</name>
-            <url>github:https://hazendaz.github.io/7-zip/</url>
+            <url>scm:git:ssh://git@github.com/hazendaz/7-zip.git</url>
         </site>
     </distributionManagement>
 
