@@ -1,7 +1,7 @@
 # 7-zip Distro #
 
 [![Java CI](https://github.com/hazendaz/7-zip/workflows/Java%20CI/badge.svg)](https://github.com/hazendaz/7-zip/actions?query=workflow%3A%22Java+CI%22)
-[![Maven central](https://maven-badges.herokuapp.com/maven-central/com.github.hazendaz/7-zip/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.hazendaz/7-zip)
+[![Maven central](https://maven-badges.herokuapp.com/maven-central/com.github.hazendaz.7zip/7zip/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.hazendaz.7zip/7zip)
 [![Apache 2](http://img.shields.io/badge/license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![hazendaz](src/site/resources/images/hazendaz-banner.jpg)
