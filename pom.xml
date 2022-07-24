@@ -62,7 +62,7 @@
     </distributionManagement>
 
     <properties>
-        <seven-zip.version>2200</seven-zip.version>
+        <seven-zip.version>2201</seven-zip.version>
         <download-plugin.version>1.6.8</download-plugin.version>
     </properties>
 
