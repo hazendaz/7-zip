@@ -62,8 +62,8 @@
     </distributionManagement>
 
     <properties>
-        <download-plugin.version>1.7.0</download-plugin.version>
         <seven-zip.version>2300</seven-zip.version>
+        <download-plugin.version>1.6.8</download-plugin.version>
 
         <!-- Automatic Module Name -->
         <module.name>com.github.hazendaz.7zip</module.name>
