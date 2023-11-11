@@ -50,8 +50,8 @@
     <scm>
         <connection>scm:git:ssh://git@github.com/hazendaz/7-zip.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/hazendaz/7-zip.git</developerConnection>
-        <url>https://github.com/hazendaz/7-zip</url>
         <tag>HEAD</tag>
+        <url>https://github.com/hazendaz/7-zip</url>
     </scm>
     <distributionManagement>
         <site>
@@ -99,10 +99,10 @@
                 <executions>
                     <execution>
                         <id>7zip-assembly</id>
-                        <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
+                        <phase>package</phase>
                         <configuration>
                             <descriptors>
                                 <descriptor>${project.basedir}/src/assembly/assembly.xml</descriptor>
