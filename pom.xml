@@ -63,7 +63,7 @@
 
     <properties>
         <seven-zip.version>2301</seven-zip.version>
-        <download-plugin.version>1.8.0</download-plugin.version>
+        <download-plugin.version>1.8.1</download-plugin.version>
 
         <!-- Automatic Module Name -->
         <module.name>com.github.hazendaz.7zip</module.name>
