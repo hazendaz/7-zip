@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    7-zip (https://github.com/hazendaz/7-zip)
+    7zip - Distribution for 7-zip
+    Copyright © 2011-2025 hazendaz (jeremylandis@hotmail.com)
 
-    Copyright 2011-2024 Hazendaz.
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2
+    of the License, or (at your option) any later version.
 
-    All rights reserved. This program and the accompanying materials
-    are made available under the terms of The Apache Software License,
-    Version 2.0 which accompanies this distribution, and is available at
-    https://www.apache.org/licenses/LICENSE-2.0.txt
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-    Contributors:
-        Hazendaz (Jeremy Landis).
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -75,6 +80,16 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration>
+                    <properties>
+                        <email>jeremylandis@hotmail.com</email>
+                    </properties>
+                </configuration>
+            </plugin>
+
             <!-- Download -->
             <plugin>
                 <groupId>io.github.download-maven-plugin</groupId>
