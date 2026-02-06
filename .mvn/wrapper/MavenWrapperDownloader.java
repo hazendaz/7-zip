@@ -46,6 +46,17 @@ public final class MavenWrapperDownloader {
     private static final int READ_TIMEOUT_MS = intEnv("MVNW_READ_TIMEOUT_MS",
             (int) Duration.ofSeconds(60).toMillis());
 
+    /**
+     * Optional SSRF mitigation: restrict where the wrapper jar can be downloaded from.
+     *
+     * Defaults to Maven Central hosts. Override with a comma-separated list via:
+     *  - MVNW_ALLOWLISTED_WRAPPER_HOSTS
+     * Set to "*" to disable host allowlisting.
+     */
+    private static final String ALLOWLISTED_WRAPPER_HOSTS = System.getenv().getOrDefault(
+            "MVNW_ALLOWLISTED_WRAPPER_HOSTS",
+            "repo.maven.apache.org,repo1.maven.org");
+
     public static void main(String[] args) {
         log("Apache Maven Wrapper Downloader " + WRAPPER_VERSION);
 
@@ -57,7 +68,7 @@ public final class MavenWrapperDownloader {
         try {
             log(" - Downloader started");
             final URL wrapperUrl = URI.create(args[0]).toURL();
-            enforceHttps(wrapperUrl);
+            validateWrapperUrl(wrapperUrl);
 
             final Path baseDir = Path.of(".").toAbsolutePath().normalize();
             final Path wrapperJarPath = baseDir.resolve(args[1]).normalize();
@@ -108,6 +119,39 @@ public final class MavenWrapperDownloader {
         }
 
         log(" - Downloader complete");
+    }
+
+    private static void validateWrapperUrl(URL url) throws IOException {
+        enforceHttps(url);
+        enforceHostAllowlist(url);
+    }
+
+    private static void enforceHostAllowlist(URL url) throws IOException {
+        final String allow = ALLOWLISTED_WRAPPER_HOSTS;
+        if (allow == null || allow.isBlank()) {
+            return;
+        }
+        final String trimmed = allow.trim();
+        if ("*".equals(trimmed)) {
+            return; // explicitly disabled
+        }
+
+        final String host = url.getHost();
+        if (host == null || host.isBlank()) {
+            throw new IOException("Invalid URL host");
+        }
+
+        for (String allowed : trimmed.split(",")) {
+            final String a = allowed.trim();
+            if (a.isEmpty()) {
+                continue;
+            }
+            if (host.equalsIgnoreCase(a)) {
+                return;
+            }
+        }
+
+        throw new IOException("Refusing to download wrapper from non-allowlisted host: " + host);
     }
 
     private static void enforceHttps(URL url) throws IOException {
