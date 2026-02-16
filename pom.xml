@@ -32,7 +32,7 @@
 
     <groupId>com.github.hazendaz.7zip</groupId>
     <artifactId>7zip</artifactId>
-    <version>26.00</version>
+    <version>26.01-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>7zip</name>
@@ -56,7 +56,7 @@
     <scm>
         <connection>scm:git:ssh://git@github.com/hazendaz/7-zip.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/hazendaz/7-zip.git</developerConnection>
-        <tag>7zip-26.00</tag>
+        <tag>HEAD</tag>
         <url>https://github.com/hazendaz/7-zip</url>
     </scm>
     <distributionManagement>
@@ -75,7 +75,7 @@
         <module.name>com.github.hazendaz.7zip</module.name>
 
         <!-- Reproducible Builds -->
-        <project.build.outputTimestamp>1771270612</project.build.outputTimestamp>
+        <project.build.outputTimestamp>1771270629</project.build.outputTimestamp>
     </properties>
 
     <build>
