@@ -144,11 +144,30 @@ if exist %WRAPPER_JAR% (
     )
 
     powershell -Command "&{"^
+        "$ProgressPreference = 'SilentlyContinue';"^
         "$webclient = new-object System.Net.WebClient;"^
+        "$webclient.Headers['user-agent'] = 'maven-wrapper/3.3.4';"^
+        "$webclient.Proxy = [System.Net.WebRequest]::DefaultWebProxy;"^
+        "if ($webclient.Proxy -ne $null) { $webclient.Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials }"^
+        "$webclient.Encoding = [System.Text.Encoding]::UTF8;"^
         "if (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {"^
         "$webclient.Credentials = new-object System.Net.NetworkCredential('%MVNW_USERNAME%', '%MVNW_PASSWORD%');"^
         "}"^
-        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile('%WRAPPER_URL%', '%WRAPPER_JAR%')"^
+        "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 -bor [Net.SecurityProtocolType]::Tls13;"^
+        "[Net.ServicePointManager]::Expect100Continue = $false;"^
+        "[Net.ServicePointManager]::DefaultConnectionLimit = 10;"^
+        "$wcTimeout = 60;"^
+        "if (-not [string]::IsNullOrEmpty($env:MVNW_READ_TIMEOUT_SEC)) { try { $wcTimeout = [int]$env:MVNW_READ_TIMEOUT_SEC } catch {} }"^
+        "if ($wcTimeout -lt 5) { $wcTimeout = 5 }"^
+        "$req = [System.Net.HttpWebRequest]::Create('%WRAPPER_URL%');"^
+        "$req.Method = 'GET';"^
+        "$req.Timeout = $wcTimeout * 1000;"^
+        "$req.ReadWriteTimeout = $wcTimeout * 1000;"^
+        "$req.AllowAutoRedirect = $true;"^
+        "if ($webclient.Credentials -ne $null) { $req.Credentials = $webclient.Credentials }"^
+        "$resp = $req.GetResponse();"^
+        "$resp.Close();"^
+        "$webclient.DownloadFile('%WRAPPER_URL%', '%WRAPPER_JAR%')"^
         "}"
     if "%MVNW_VERBOSE%" == "true" (
         echo Finished downloading %WRAPPER_JAR%
