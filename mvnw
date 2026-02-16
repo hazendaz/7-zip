@@ -240,18 +240,24 @@ else
   if command -v wget >/dev/null; then
     log "Found wget ... using wget"
     [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--quiet"
+    # Allow overrides (seconds) similar to mvnw.cmd
+    WGET_TIMEOUT="${MVNW_READ_TIMEOUT_SEC:-60}"
+    if [ "$WGET_TIMEOUT" -lt 5 ] 2>/dev/null; then WGET_TIMEOUT=5; fi
     if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
-      wget ${QUIET:+"$QUIET"} "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+      wget ${QUIET:+"$QUIET"} --timeout="$WGET_TIMEOUT" "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
     else
-      wget ${QUIET:+"$QUIET"} --http-user="$MVNW_USERNAME" --http-password="$MVNW_PASSWORD" "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+      wget ${QUIET:+"$QUIET"} --timeout="$WGET_TIMEOUT" --http-user="$MVNW_USERNAME" --http-password="$MVNW_PASSWORD" "$wrapperUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
     fi
   elif command -v curl >/dev/null; then
     log "Found curl ... using curl"
     [ "$MVNW_VERBOSE" = true ] && QUIET="" || QUIET="--silent"
+    # Allow overrides (seconds) similar to mvnw.cmd
+    CURL_TIMEOUT="${MVNW_READ_TIMEOUT_SEC:-60}"
+    if [ "$CURL_TIMEOUT" -lt 5 ] 2>/dev/null; then CURL_TIMEOUT=5; fi
     if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
-      curl ${QUIET:+"$QUIET"} -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
+      curl ${QUIET:+"$QUIET"} --connect-timeout 15 --max-time "$CURL_TIMEOUT" -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
     else
-      curl ${QUIET:+"$QUIET"} --user "$MVNW_USERNAME:$MVNW_PASSWORD" -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
+      curl ${QUIET:+"$QUIET"} --connect-timeout 15 --max-time "$CURL_TIMEOUT" --user "$MVNW_USERNAME:$MVNW_PASSWORD" -o "$wrapperJarPath" "$wrapperUrl" -f -L || rm -f "$wrapperJarPath"
     fi
   else
     log "Falling back to using Java to download"
