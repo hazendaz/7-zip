@@ -32,7 +32,7 @@
 
     <groupId>com.github.hazendaz.7zip</groupId>
     <artifactId>7zip</artifactId>
-    <version>25.02-SNAPSHOT</version>
+    <version>26.00-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>7zip</name>
@@ -68,7 +68,7 @@
     </distributionManagement>
 
     <properties>
-        <seven-zip.version>2501</seven-zip.version>
+        <seven-zip.version>2600</seven-zip.version>
         <download-plugin.version>2.1.0</download-plugin.version>
 
         <!-- Automatic Module Name -->
