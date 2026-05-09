@@ -68,7 +68,7 @@
     </distributionManagement>
 
     <properties>
-        <seven-zip.version>2600</seven-zip.version>
+        <seven-zip.version>2601</seven-zip.version>
         <download-plugin.version>2.1.0</download-plugin.version>
 
         <!-- Automatic Module Name -->
