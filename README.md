@@ -1,8 +1,8 @@
 # 7-zip Distro #
 
 [![Java CI](https://github.com/hazendaz/7-zip/workflows/Java%20CI/badge.svg)](https://github.com/hazendaz/7-zip/actions?query=workflow%3A%22Java+CI%22)
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.hazendaz.7zip/7zip.svg)](https://central.sonatype.com/artifact/com.github.hazendaz.7zip/7zip)
-[![LGPL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.hazendaz.7zip/7zip?logo=apache-maven&label=maven%20central)](https://central.sonatype.com/artifact/com.github.hazendaz.7zip/7zip)
+[![LGPL v3](https://img.shields.io/github/license/hazendaz/7-zip?logo=apache)](https://www.gnu.org/licenses/lgpl-3.0)
 
 ![hazendaz](src/site/resources/images/hazendaz-banner.jpg)
 
