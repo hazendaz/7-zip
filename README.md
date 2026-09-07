@@ -17,3 +17,8 @@ For more information on 7-zip, please see [7-zip](https://www.7-zip.org/)
 # Use Case #
 
 Maven based storage of distribution in common location to offer more secure download location.
+
+# Note #
+
+This was primarly necessary when there were not immutability in releases and alternative distribution was necessary.  Now that sonatype is imposing caps, this is deprecated.
+The 7-zip team does distribute to https://github.com/ip7z/7zip/releases.  They are not immutable yet, but I'll open a ticket to ask that become the standard.
